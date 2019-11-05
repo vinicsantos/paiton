@@ -1,5 +1,20 @@
 import copy
 
+def appStart():
+    fileName = getFileName()
+    fileStopwordsName = getFileStopwordsName()
+    stopWordsFile = openFile(fileStopwordsName)
+    generalFile = openFile(fileName)
+    print(showWords(generalFile, stopWordsFile))
+    stopWordsFile.close()
+    generalFile.close()
+    stopWordsFile = openFile(fileStopwordsName)
+    generalFile = openFile(fileName)
+    print(moreWords(showWords(generalFile, stopWordsFile)))
+    stopWordsFile.close()
+    generalFile.close()
+
+
 def getFileName():
     return input("Entre com o nome do arquivo: ")
 
@@ -37,14 +52,4 @@ def showWords(generalFile, stopWordsFile):
                 wordsDictonary[word] = 1
     return wordsDictonary
 
-    
-
-fileName = getFileName()
-fileStopwordsName = getFileStopwordsName()
-stopWordsFile = openFile(fileStopwordsName)
-generalFile = openFile(fileName)
-print(showWords(generalFile, stopWordsFile))
-print(moreWords(showWords(generalFile, stopWordsFile)))
-stopWordsFile.close()
-generalFile.close()
-
+appStart()
